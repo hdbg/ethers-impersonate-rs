@@ -8,7 +8,7 @@ static SOLC_BIN_LIST_URL: &str = "https://binaries.soliditylang.org/bin/list.txt
 /// Given a Solc [Version], lookup the build metadata and return the full SemVer.
 /// e.g. `0.8.13` -> `0.8.13+commit.abaa5c0e`
 pub async fn lookup_compiler_version(version: &Version) -> Result<Version> {
-    let response = reqwest::get(SOLC_BIN_LIST_URL).await?.text().await?;
+    let response = reqwest_impersonate::get(SOLC_BIN_LIST_URL).await?.text().await?;
     // Ignore extra metadata (`pre` or `build`)
     let version = format!("{}.{}.{}", version.major, version.minor, version.patch);
     let v = response

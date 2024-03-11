@@ -1,7 +1,7 @@
 use super::{GasCategory, GasOracle, GasOracleError, Result};
 use async_trait::async_trait;
 use ethers_core::types::U256;
-use reqwest::Client;
+use reqwest_impersonate::Client;
 use serde::Deserialize;
 use url::Url;
 

@@ -45,7 +45,7 @@ toml.workspace = true
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 # online
 ethers-etherscan = { workspace = true, optional = true }
-reqwest = { workspace = true, features = ["blocking"], optional = true }
+reqwest-impersonate = { workspace = true, features = ["blocking"], optional = true }
 tokio = { workspace = true, optional = true }
 url = { workspace = true, optional = true }
 
@@ -54,9 +54,7 @@ default = ["providers"]
 
 providers = []
 
-online = ["reqwest", "ethers-etherscan", "url", "tokio"]
-rustls = ["reqwest?/rustls-tls", "ethers-etherscan?/rustls"]
-openssl = ["reqwest?/native-tls", "ethers-etherscan?/openssl"]
+online = ["reqwest-impersonate", "ethers-etherscan", "url", "tokio"]
 
 [dev-dependencies]
 tempfile.workspace = true

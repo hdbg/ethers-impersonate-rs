@@ -9,11 +9,11 @@ rust-version.workspace = true
 edition.workspace = true
 
 [dev-dependencies]
-ethers = { workspace = true, features = ["abigen", "ipc", "rustls", "ws"] }
+ethers = { workspace = true, features = ["abigen", "ipc", "ws"] }
 
 tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }
 async-trait.workspace = true
-reqwest.workspace = true
+reqwest-impersonate.workspace = true
 url.workspace = true
 
 serde.workspace = true

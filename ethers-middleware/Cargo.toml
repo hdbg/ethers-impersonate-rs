@@ -40,8 +40,8 @@ tracing-futures.workspace = true
 instant.workspace = true
 
 # for gas oracles
-reqwest.workspace = true
 url.workspace = true
+reqwest-impersonate = { workspace = true, features = ["json"] }
 
 serde_json.workspace = true
 
@@ -51,21 +51,18 @@ ethers-etherscan = { workspace = true, optional = true }
 tokio.workspace = true
 
 [dev-dependencies]
-ethers-providers = { workspace = true, features = ["ws", "rustls"] }
+ethers-providers = { workspace = true, features = ["ws"] }
 ethers-solc.workspace = true
 
 hex.workspace = true
 rand.workspace = true
 once_cell.workspace = true
-reqwest = { workspace = true, features = ["json", "rustls"] }
 
 [target.'cfg(not(target_arch = "wasm32"))'.dev-dependencies]
 tokio = { workspace = true, features = ["rt-multi-thread", "macros", "time"] }
 
 [features]
-default = ["rustls", "etherscan"]
+default = ["etherscan"]
 celo = ["ethers-core/celo", "ethers-providers/celo", "ethers-signers/celo", "ethers-contract/celo"]
 etherscan = ["dep:ethers-etherscan"]
 optimism = ["ethers-core/optimism", "ethers-providers/optimism", "ethers-contract/optimism"]
-rustls = ["reqwest/rustls-tls"]
-openssl = ["reqwest/native-tls"]

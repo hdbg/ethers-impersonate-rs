@@ -29,7 +29,7 @@ serde.workspace = true
 serde_json = { workspace = true, features = ["raw_value"] }
 
 http = "0.2"
-reqwest = { workspace = true, features = ["json"] }
+reqwest-impersonate = { workspace = true, features = ["json"] }
 url.workspace = true
 base64 = "0.22"
 jsonwebtoken = "8"
@@ -76,7 +76,7 @@ tokio = { workspace = true, features = ["rt-multi-thread", "macros", "time"] }
 tempfile = "3"
 
 [features]
-default = ["ws", "rustls"]
+default = ["ws",]
 celo = ["ethers-core/celo"]
 optimism = ["ethers-core/optimism"]
 
@@ -86,8 +86,8 @@ ipc = ["tokio/io-util", "futures-channel", "winapi"]
 
 # we use the webpki roots so we can build static binaries w/o any root cert dependencies
 # on the host
-rustls = ["tokio-tungstenite/rustls-tls-webpki-roots", "reqwest/rustls-tls"]
-openssl = ["tokio-tungstenite/native-tls", "reqwest/native-tls"]
+rustls = ["tokio-tungstenite/rustls-tls-webpki-roots"]
+openssl = ["tokio-tungstenite/native-tls"]
 dev-rpc = []
 
 [dev-dependencies]

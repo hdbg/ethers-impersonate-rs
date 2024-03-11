@@ -2,7 +2,7 @@
 //! This is the most basic connection to a node.
 
 use ethers::prelude::*;
-use reqwest::header::{HeaderMap, HeaderValue};
+use reqwest_impersonate::header::{HeaderMap, HeaderValue};
 use std::sync::Arc;
 
 const RPC_URL: &str = "https://eth.llamarpc.com";
@@ -21,22 +21,22 @@ async fn create_instance() -> eyre::Result<()> {
     let _provider = Provider::<Http>::try_from(RPC_URL)?;
 
     // Instantiate with auth to append basic authorization headers across requests
-    let url = reqwest::Url::parse(RPC_URL)?;
+    let url = reqwest_impersonate::Url::parse(RPC_URL)?;
     let auth = Authorization::basic("username", "password");
     let _provider = Http::new_with_auth(url, auth)?;
 
     // Instantiate from custom Http Client if you need
     // finer control over the Http client configuration
     // (TLS, Proxy, Cookies, Headers, etc.)
-    let url = reqwest::Url::parse(RPC_URL)?;
+    let url = reqwest_impersonate::Url::parse(RPC_URL)?;
 
     let mut headers = HeaderMap::new();
     headers.insert("Authorization", HeaderValue::from_static("Bearer my token"));
     headers.insert("X-MY-HEADERS", HeaderValue::from_static("Some value"));
 
-    let http_client = reqwest::Client::builder()
+    let http_client = reqwest_impersonate::Client::builder()
         .default_headers(headers)
-        .proxy(reqwest::Proxy::all("http://proxy.example.com:8080")?)
+        .proxy(reqwest_impersonate::Proxy::all("http://proxy.example.com:8080")?)
         .build()?;
 
     let _provider = Http::new_with_client(url, http_client);

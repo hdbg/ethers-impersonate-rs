@@ -23,7 +23,7 @@ rustdoc-args = ["--cfg", "docsrs"]
 all-features = true
 
 [features]
-default = ["abigen", "rustls", "etherscan"]
+default = ["abigen", "etherscan"]
 
 # workspace-wide features
 legacy = ["ethers-core/legacy", "ethers-contract/legacy"]
@@ -44,20 +44,6 @@ optimism = [
     "ethers-contract/optimism",
 ]
 
-rustls = [
-    "ethers-contract/rustls",
-    "ethers-etherscan?/rustls",
-    "ethers-middleware/rustls",
-    "ethers-providers/rustls",
-    "ethers-solc?/rustls",
-]
-openssl = [
-    "ethers-contract/openssl",
-    "ethers-etherscan?/openssl",
-    "ethers-middleware/openssl",
-    "ethers-providers/openssl",
-    "ethers-solc?/openssl",
-]
 
 # ethers-providers
 ws = ["ethers-providers/ws"]

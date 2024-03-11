@@ -15,7 +15,7 @@ async fn connect_jwt() -> eyre::Result<()> {
     let _provider = Provider::<Http>::try_from(RPC_URL)?;
 
     // Instantiate with auth to append basic authorization headers across requests
-    let url = reqwest::Url::parse(RPC_URL)?;
+    let url = reqwest_impersonate::Url::parse(RPC_URL)?;
 
     // Use a JWT signing key to generate a bearer token
     let jwt_secret = &[42; 32];

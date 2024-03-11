@@ -34,7 +34,7 @@ pub use provider_oracle::ProviderOracle;
 use async_trait::async_trait;
 use auto_impl::auto_impl;
 use ethers_core::types::U256;
-use reqwest::Error as ReqwestError;
+use reqwest_impersonate::Error as ReqwestError;
 use std::{error::Error, fmt::Debug};
 use thiserror::Error;
 

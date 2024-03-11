@@ -2,6 +2,8 @@
 #![deny(unsafe_code, rustdoc::broken_intra_doc_links)]
 #![cfg_attr(docsrs, feature(doc_cfg, doc_auto_cfg))]
 
+use reqwest_impersonate;
+
 /// The [Gas Escalator middleware](crate::gas_escalator::GasEscalatorMiddleware)
 /// is used to re-broadcast transactions with an increasing gas price to guarantee
 /// their timely inclusion.

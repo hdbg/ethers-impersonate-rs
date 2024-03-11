@@ -1393,7 +1393,7 @@ mod tests {
     keywords = ["ethereum", "web3", "celo", "ethers"]
 
     [dependencies]
-    ethers = {git="https://github.com/gakonst/ethers-rs", rev = "fd8ebf5",features = ["ws", "rustls", "ipc"] }
+    ethers = {git="https://github.com/gakonst/ethers-rs", rev = "fd8ebf5",features = ["ws",  "ipc"] }
 "#;
 
             let root = mod_root.parent().unwrap();
@@ -1435,7 +1435,7 @@ mod tests {
     keywords = ["ethereum", "web3", "celo", "ethers"]
 
     [dependencies]
-    ethers = {git = "https://github.com/gakonst/ethers-rs", features = ["ws", "rustls", "ipc"] }
+    ethers = {git = "https://github.com/gakonst/ethers-rs", features = ["ws",  "ipc"] }
 "#;
 
             let root = mod_root.parent().unwrap();
