@@ -3,7 +3,7 @@
 use super::common::{Authorization, JsonRpcError, Request, Response};
 use crate::{errors::ProviderError, JsonRpcClient};
 use async_trait::async_trait;
-use reqwest_impersonate::{header::HeaderValue, Client, Error as ReqwestError};
+use chromimic::{header::HeaderValue, Client, Error as ReqwestError};
 use serde::{de::DeserializeOwned, Serialize};
 use std::{
     str::FromStr,
@@ -165,8 +165,8 @@ impl Provider {
         let mut auth_value = HeaderValue::from_str(&auth.to_string())?;
         auth_value.set_sensitive(true);
 
-        let mut headers = reqwest_impersonate::header::HeaderMap::new();
-        headers.insert(reqwest_impersonate::header::AUTHORIZATION, auth_value);
+        let mut headers = chromimic::header::HeaderMap::new();
+        headers.insert(chromimic::header::AUTHORIZATION, auth_value);
 
         let client = Client::builder().default_headers(headers).build()?;
 
@@ -182,10 +182,10 @@ impl Provider {
     /// use url::Url;
     ///
     /// let url = Url::parse("http://localhost:8545").unwrap();
-    /// let client = reqwest_impersonate::Client::builder().build().unwrap();
+    /// let client = chromimic::Client::builder().build().unwrap();
     /// let provider = Http::new_with_client(url, client);
     /// ```
-    pub fn new_with_client(url: impl Into<Url>, client: reqwest_impersonate::Client) -> Self {
+    pub fn new_with_client(url: impl Into<Url>, client: chromimic::Client) -> Self {
         Self { id: AtomicU64::new(1), client, url: url.into() }
     }
 }
@@ -214,5 +214,5 @@ pub enum HttpClientError {
 
     /// Thrown if unable to build client
     #[error(transparent)]
-    ClientBuild(#[from] reqwest_impersonate::Error),
+    ClientBuild(#[from] chromimic::Error),
 }

@@ -7,7 +7,7 @@
 //! as timed out connections or responses in the 5xx range can also be retried separately.
 
 use ethers::prelude::*;
-use reqwest_impersonate::Url;
+use chromimic::Url;
 use std::time::Duration;
 
 const RPC_URL: &str = "https://eth.llamarpc.com";

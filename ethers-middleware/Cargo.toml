@@ -41,7 +41,7 @@ instant.workspace = true
 
 # for gas oracles
 url.workspace = true
-reqwest-impersonate = { workspace = true, features = ["json"] }
+chromimic = { workspace = true, features = ["json"] }
 
 serde_json.workspace = true
 

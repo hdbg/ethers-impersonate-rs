@@ -3,7 +3,7 @@
 use super::{GasCategory, GasOracle, GasOracleError, Result, GWEI_TO_WEI_U256};
 use async_trait::async_trait;
 use ethers_core::types::U256;
-use reqwest_impersonate::Client;
+use chromimic::Client;
 use serde::Deserialize;
 use std::collections::HashMap;
 use url::Url;

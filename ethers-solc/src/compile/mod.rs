@@ -442,7 +442,7 @@ impl Solc {
         tracing::trace!("blocking installing solc version \"{}\"", version);
         crate::report::solc_installation_start(version);
         // the async version `svm::install` is used instead of `svm::blocking_intsall`
-        // because the underlying `reqwest_impersonate::blocking::Client` does not behave well
+        // because the underlying `chromimic::blocking::Client` does not behave well
         // in tokio rt. see https://github.com/seanmonstar/reqwest/issues/1017
         cfg_if::cfg_if! {
             if #[cfg(target_arch = "wasm32")] {

@@ -29,7 +29,7 @@ serde.workspace = true
 serde_json = { workspace = true, features = ["raw_value"] }
 
 http = "0.2"
-reqwest-impersonate = { workspace = true, features = ["json"] }
+chromimic = { workspace = true, features = ["json"] }
 url.workspace = true
 base64 = "0.22"
 jsonwebtoken = "8"

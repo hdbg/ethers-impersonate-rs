@@ -22,7 +22,7 @@ pub enum EtherscanError {
     #[error(transparent)]
     EnvVarNotFound(#[from] VarError),
     #[error(transparent)]
-    Reqwest(#[from] reqwest_impersonate::Error),
+    Reqwest(#[from] chromimic::Error),
     #[error(transparent)]
     Serde(#[from] serde_json::Error),
     #[error("Contract source code not verified: {0}")]
@@ -48,7 +48,7 @@ pub enum EtherscanError {
     #[error("Sorry, you have been blocked by Cloudflare, See also https://community.cloudflare.com/t/sorry-you-have-been-blocked/110790")]
     BlockedByCloudflare,
     #[error("It appears that the request prompted a (browser based) security challenge, you're possibly rate limited or your ip is scrutinized by the api endpoint: {0:?}")]
-    SecurityChallenge(reqwest_impersonate::Url),
+    SecurityChallenge(chromimic::Url),
     #[error("The request prompted a cloudflare captcha security challenge to review the security of your connection before proceeding.")]
     CloudFlareSecurityChallenge,
     #[error("Received `Page not found` response. API server is likely down")]

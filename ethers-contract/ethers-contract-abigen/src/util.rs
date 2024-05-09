@@ -97,8 +97,8 @@ pub(crate) fn expand_input_name(index: usize, name: &str) -> TokenStream {
 
 /// Perform a blocking HTTP GET request and return the contents of the response as a String.
 #[cfg(all(feature = "online", not(target_arch = "wasm32")))]
-pub(crate) fn http_get(url: impl reqwest_impersonate::IntoUrl) -> Result<String> {
-    Ok(reqwest_impersonate::blocking::get(url)?.text()?)
+pub(crate) fn http_get(url: impl chromimic::IntoUrl) -> Result<String> {
+    Ok(chromimic::blocking::get(url)?.text()?)
 }
 
 /// Replaces any occurrences of env vars in the `raw` str with their value

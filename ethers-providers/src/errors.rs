@@ -158,7 +158,7 @@ pub enum ProviderError {
 
     /// Error in underlying lib `reqwest`
     #[error(transparent)]
-    HTTPError(#[from] reqwest_impersonate::Error),
+    HTTPError(#[from] chromimic::Error),
 
     /// Custom error from unknown source
     #[error("custom error: {0}")]

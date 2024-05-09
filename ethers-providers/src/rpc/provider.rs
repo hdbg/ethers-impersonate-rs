@@ -899,7 +899,7 @@ impl<P: JsonRpcClient> Middleware for Provider<P> {
         if metadata_url.scheme() == "ipfs" {
             metadata_url = erc::http_link_ipfs(metadata_url).map_err(ProviderError::CustomError)?;
         }
-        let metadata: erc::Metadata = reqwest_impersonate::get(metadata_url).await?.json().await?;
+        let metadata: erc::Metadata = chromimic::get(metadata_url).await?.json().await?;
         Url::parse(&metadata.image).map_err(|e| ProviderError::CustomError(e.to_string()))
     }
 

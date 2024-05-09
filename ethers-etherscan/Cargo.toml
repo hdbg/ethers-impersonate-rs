@@ -30,7 +30,7 @@ ethers-core.workspace = true
 
 ethers-solc = { workspace = true, optional = true }
 
-reqwest-impersonate = { workspace = true, features = ["json"] }
+chromimic = { workspace = true, features = ["json"] }
 serde = { workspace = true, features = ["derive"] }
 serde_json.workspace = true
 thiserror.workspace = true

@@ -1,7 +1,7 @@
 use super::{from_gwei_f64, GasCategory, GasOracle, GasOracleError, Result, GWEI_TO_WEI_U256};
 use async_trait::async_trait;
 use ethers_core::types::U256;
-use reqwest_impersonate::{header::AUTHORIZATION, Client};
+use chromimic::{header::AUTHORIZATION, Client};
 use serde::Deserialize;
 use std::collections::HashMap;
 use url::Url;

@@ -35,7 +35,7 @@ async fn main() -> eyre::Result<()> {
 }
 ```
 
-Additionally, you can initialize a new provider with your own custom `reqwest_impersonate::Client`.
+Additionally, you can initialize a new provider with your own custom `chromimic::Client`.
 
 ```rust
 use ethers::providers::Http;
@@ -44,7 +44,7 @@ use url::Url;
 #[tokio::main]
 async fn main() -> eyre::Result<()> {
     let url = Url::parse("http://localhost:8545")?;
-    let client = reqwest_impersonate::Client::builder().build()?;
+    let client = chromimic::Client::builder().build()?;
     let provider = Http::new_with_client(url, client);
 
     Ok(())

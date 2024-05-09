@@ -12,7 +12,7 @@ use ethers_core::{
     abi::{Abi, Address},
     types::{Chain, H256},
 };
-use reqwest_impersonate::{header, IntoUrl, Url};
+use chromimic::{header, IntoUrl, Url};
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 use std::{
     borrow::Cow,
@@ -39,7 +39,7 @@ pub(crate) type Result<T, E = EtherscanError> = std::result::Result<T, E>;
 #[derive(Clone, Debug)]
 pub struct Client {
     /// Client that executes HTTP requests
-    client: reqwest_impersonate::Client,
+    client: chromimic::Client,
     /// Etherscan API key
     api_key: Option<String>,
     /// Etherscan API endpoint like <https://api(-chain).etherscan.io/api>
@@ -253,7 +253,7 @@ impl Client {
 #[derive(Clone, Debug, Default)]
 pub struct ClientBuilder {
     /// Client that executes HTTP requests
-    client: Option<reqwest_impersonate::Client>,
+    client: Option<chromimic::Client>,
     /// Etherscan API key
     api_key: Option<String>,
     /// Etherscan API endpoint like <https://api(-chain).etherscan.io/api>
@@ -276,7 +276,7 @@ impl ClientBuilder {
         fn urls(
             api: impl IntoUrl,
             url: impl IntoUrl,
-        ) -> (reqwest_impersonate::Result<Url>, reqwest_impersonate::Result<Url>) {
+        ) -> (chromimic::Result<Url>, chromimic::Result<Url>) {
             (api.into_url(), url.into_url())
         }
         let (etherscan_api_url, etherscan_url) = chain
@@ -296,8 +296,8 @@ impl ClientBuilder {
         Ok(self)
     }
 
-    /// Configures the `reqwest_impersonate::Client`
-    pub fn with_client(mut self, client: reqwest_impersonate::Client) -> Self {
+    /// Configures the `chromimic::Client`
+    pub fn with_client(mut self, client: chromimic::Client) -> Self {
         self.client = Some(client);
         self
     }
@@ -442,7 +442,7 @@ struct Query<'a, T: Serialize> {
 }
 
 /// Ensures that the url is well formatted to be used by the Client's functions that join paths.
-fn ensure_url(url: impl IntoUrl) -> std::result::Result<Url, reqwest_impersonate::Error> {
+fn ensure_url(url: impl IntoUrl) -> std::result::Result<Url, chromimic::Error> {
     let url_str = url.as_str();
 
     // ensure URL ends with `/`
@@ -456,7 +456,7 @@ fn ensure_url(url: impl IntoUrl) -> std::result::Result<Url, reqwest_impersonate
 /// This is a hack to work around `IntoUrl`'s sealed private functions, which can't be called
 /// normally.
 #[inline]
-fn into_url(url: impl IntoUrl) -> std::result::Result<Url, reqwest_impersonate::Error> {
+fn into_url(url: impl IntoUrl) -> std::result::Result<Url, chromimic::Error> {
     url.into_url()
 }
 

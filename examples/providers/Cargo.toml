@@ -13,7 +13,7 @@ ethers = { workspace = true, features = ["abigen", "ipc", "ws"] }
 
 tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }
 async-trait.workspace = true
-reqwest-impersonate.workspace = true
+chromimic.workspace = true
 url.workspace = true
 
 serde.workspace = true
